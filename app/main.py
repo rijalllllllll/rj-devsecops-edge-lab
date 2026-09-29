@@ -6,11 +6,10 @@ IIoT deployment inside this DevSecOps reference repo.
 """
 import os
 import time
-from typing import Optional
 
 from fastapi import FastAPI, Request
-from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
 
 APP_NAME = "rj-edge-telemetry"
@@ -33,7 +32,7 @@ class Telemetry(BaseModel):
     device_id: str = Field(..., min_length=1, max_length=128)
     metric: str = Field(..., min_length=1, max_length=64)
     value: float
-    ts: Optional[float] = None
+    ts: float | None = None
 
 
 class TelemetryResponse(BaseModel):
