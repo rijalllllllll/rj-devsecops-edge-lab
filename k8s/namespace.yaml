@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: rj-edge
+  labels:
+    name: rj-edge
+    app.kubernetes.io/part-of: rj-devsecops-edge-lab

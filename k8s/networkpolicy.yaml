@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: rj-edge-deny-all
+  namespace: rj-edge
+spec:
+  podSelector: {}
+  policyTypes:
+    - Ingress
+    - Egress
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: rj-edge-allow-http-from-ns
+  namespace: rj-edge
+spec:
+  podSelector:
+    matchLabels:
+      app: rj-edge-telemetry
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+        - podSelector: {}          # same-namespace traffic (e.g. ingress controller)
+      ports:
+        - port: 8000

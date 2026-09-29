@@ -1,0 +1,11 @@
+__pycache__
+*.pyc
+.git
+.github
+.venv
+terraform/.terraform
+terraform/*.tfstate*
+*.pyo
+.pytest_cache
+.coverage
+docs
